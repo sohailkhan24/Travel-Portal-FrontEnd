@@ -1,0 +1,174 @@
+<div id="formContent">
+  <form #editForm="ngForm" (ngSubmit)="onUpdate(editForm)" *ngIf="!registered">
+    <input
+      type="text"
+      id="login"
+      class="fadeIn second"
+      ngModel
+      name="first_name"
+      placeholder="First Name"
+      required
+      #first_name="ngModel"
+    /><br />
+    <span class="help-block" *ngIf="!first_name.valid && first_name.touched"
+      >Enter a valid Name!</span
+    >
+    <input
+      type="text"
+      id="login"
+      class="fadeIn second"
+      ngModel
+      name="last_name"
+      placeholder="Last Name"
+      required
+    />
+    <input
+      type="text"
+      id="login"
+      class="fadeIn third"
+      ngModel
+      name="bussiness_unit"
+      placeholder="Your Bussiness Unit"
+      required
+    />
+    <input
+      type="text"
+      id="login"
+      class="fadeIn second"
+      ngModel
+      name="title"
+      placeholder="Your Title"
+      required
+    />
+    <input
+      type="text"
+      id="login"
+      class="fadeIn second"
+      ngModel
+      name="email"
+      placeholder="Your Email"
+      required
+      email
+    />
+    <input
+      type="text"
+      id="login"
+      class="fadeIn third"
+      ngModel
+      name="phone"
+      placeholder="Your Contact"
+      required
+    />
+
+    <input
+      type="text"
+      id="login"
+      class="fadeIn second"
+      ngModel
+      name="address1"
+      placeholder="Enter Your address(1)"
+      required
+    />
+    <input
+      type="text"
+      id="login"
+      class="fadeIn second"
+      name="address2"
+      placeholder="Enter Your address(2)"
+    />
+
+    <input
+      type="text"
+      id="login"
+      class="fadeIn second"
+      ngModel
+      name="state"
+      placeholder="State"
+      required
+    />
+
+    <input
+      type="number"
+      id="login"
+      class="fadeIn second"
+      ngModel
+      name="zip"
+      placeholder="Zip"
+      required
+      minlength="5"
+      maxlength="10"
+    />
+
+    <input
+      type="text"
+      id="login"
+      class="fadeIn second"
+      ngModel
+      name="country"
+      placeholder="Country"
+      required
+    />
+
+    <input
+      type="text"
+      id="login"
+      class="fadeIn second"
+      ngModel
+      name="city"
+      placeholder="city"
+      required
+      minlength="5"
+      maxlength="10"
+    />
+
+    <!-- <select
+        type="text"
+        id="login"
+        class="fadeIn third"
+        ngModel
+        name="country"
+        required
+        (change)="changeCountry($event.target.value)"
+        placeholder="Choose a country"
+      >
+        <option disabled>Choose A country</option>
+        <option *ngFor="let count of countryList">{{ count.name }}</option>
+      </select>
+      <select
+        type="text"
+        id="login"
+        class="fadeIn third"
+        ngModel
+        name="city"
+        required
+      >
+        <option *ngFor="let city of cities">{{ city }}</option>
+      </select> -->
+
+    <input
+      type="submit"
+      class="fourth"
+      [disabled]="!editForm.valid"
+      value="Update"
+    />
+  </form>
+</div>
+
+<div *ngIf="registered && !getData">
+  <div id="preloader">
+    <div id="loader"></div>
+  </div>
+</div>
+<div *ngIf="registered && getData" id="onSubmitData">
+  Thank you for registering .The admin will contact you shortly with password
+  and username
+
+  <p>
+    {{ reuserData.firstName }}
+    {{ reuserData.lastName }}
+    {{ reuserData.id }}
+  </p>
+  <button (click)="onPrint('onSubmitData')">Print</button>
+  <button (click)="editData()">Edit</button>
+  <button (click)="tologin()">Return to Home Page</button>
+</div>

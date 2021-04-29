@@ -1,0 +1,43 @@
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img src="" id="icon" alt="User Icon" />
+    </div>
+
+    <!-- Login Form -->
+    <form #adminLoginForm="ngForm" (ngSubmit)="onSubmit(adminLoginForm)">
+      <input
+        type="text"
+        id="login"
+        class="fadeIn second"
+        ngModel
+        name="username"
+        placeholder="Username"
+        required
+      />
+      <input
+        type="text"
+        id="password"
+        class="fadeIn third"
+        ngModel
+        name="password"
+        placeholder="password"
+        required
+        minlength="6"
+      />
+      <button
+        type="submit"
+        type="button"
+        class="btn btn-primary m-3"
+        [disabled]="!adminLoginForm.valid"
+      >
+        LOG IN
+      </button>
+    </form>
+
+    <!-- Remind Passowrd -->
+  </div>
+</div>

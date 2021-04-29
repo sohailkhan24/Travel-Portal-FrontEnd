@@ -1,0 +1,191 @@
+<p>This is first name {{ userData.firstName }}</p>
+<div id="formContent" *ngIf="!registered">
+  <form #SignUpForm="ngForm" (ngSubmit)="onSubmit(SignUpForm)">
+    <input
+      type="text"
+      id="login"
+      class="fadeIn second"
+      [(ngModel)]="userData.firstName"
+      name="first_name"
+      placeholder="First Name"
+      required
+      #first_name="ngModel"
+    /><br />
+    <span class="help-block" *ngIf="!first_name.valid && first_name.touched"
+      >Enter a valid Name!</span
+    >
+
+    <input
+      type="text"
+      id="login"
+      class="fadeIn second"
+      [(ngModel)]="userData.lastName"
+      name="last_name"
+      placeholder="Last Name"
+      required
+    />
+    <input
+      type="text"
+      id="login"
+      class="fadeIn third"
+      [(ngModel)]="userData.buisnessUnit"
+      name="bussiness_unit"
+      placeholder="Your Bussiness Unit"
+      required
+    />
+    <input
+      type="text"
+      id="login"
+      class="fadeIn second"
+      [(ngModel)]="userData.title"
+      name="title"
+      placeholder="Your Title"
+      required
+    />
+    <input
+      type="text"
+      id="login"
+      class="fadeIn second"
+      [(ngModel)]="userData.email"
+      name="email"
+      placeholder="Your Email"
+      required
+      email
+    />
+    <input
+      type="text"
+      id="login"
+      class="fadeIn third"
+      [(ngModel)]="userData.telephone"
+      name="phone"
+      placeholder="Your Contact"
+      required
+    />
+
+    <input
+      type="text"
+      id="login"
+      class="fadeIn second"
+      [(ngModel)]="userData.address1"
+      name="address1"
+      placeholder="Enter Your address(1)"
+      required
+    />
+    <input
+      type="text"
+      id="login"
+      class="fadeIn second"
+      [(ngModel)]="userData.address2"
+      name="address2"
+      placeholder="Enter Your address(2)"
+    />
+
+    <input
+      type="text"
+      id="login"
+      class="fadeIn second"
+      [(ngModel)]="userData.state"
+      name="state"
+      placeholder="State"
+      required
+    />
+
+    <input
+      type="text"
+      id="login"
+      class="fadeIn second"
+      [(ngModel)]="userData.zip"
+      name="zip"
+      placeholder="Zip"
+      required
+      minlength="5"
+      maxlength="10"
+    />
+
+    <input
+      type="text"
+      id="login"
+      class="fadeIn second"
+      [(ngModel)]="userData.country"
+      name="country"
+      placeholder="Country"
+      required
+    />
+
+    <input
+      type="text"
+      id="login"
+      class="fadeIn second"
+      [(ngModel)]="userData.city"
+      name="city"
+      placeholder="city"
+      required
+      minlength="5"
+      maxlength="10"
+    />
+
+    <!-- <select
+      type="text"
+      id="login"
+      class="fadeIn third"
+      ngModel
+      name="country"
+      required
+      (change)="changeCountry($event.target.value)"
+      placeholder="Choose a country"
+    >
+      <option disabled>Choose A country</option>
+      <option *ngFor="let count of countryList">{{ count.name }}</option>
+    </select>
+    <select
+      type="text"
+      id="login"
+      class="fadeIn third"
+      ngModel
+      name="city"
+      required
+    >
+      <option *ngFor="let city of cities">{{ city }}</option>
+    </select> -->
+
+    <div *ngIf="isNew; else elseBlock">
+      <input
+        type="submit"
+        class="fourth"
+        [disabled]="!SignUpForm.valid"
+        value="Sign Up"
+      />
+    </div>
+    <ng-template #elseBlock
+      ><input
+        type="submit"
+        class="fourth"
+        [disabled]="!SignUpForm.valid"
+        value="Update"
+    /></ng-template>
+
+    <div id="formFooter">
+      Already a User?
+      <a class="underlineHover" routerLink="/login"> LogIn </a>
+    </div>
+  </form>
+</div>
+<div *ngIf="registered && !getData">
+  <div id="preloader">
+    <div id="loader"></div>
+  </div>
+</div>
+<div *ngIf="registered && getData" id="onSubmitData">
+  Thank you for registering .The admin will contact you shortly with password
+  and username
+  <br /><br /><br />
+
+  <p>
+    {{ userData.firstName }}
+    {{ userData.lastName }}
+    {{ userData.id }}
+  </p>
+  <button (click)="onPrint('onSubmitData')">Print</button>
+  <button (click)="editData()">Edit</button>
+  <button (click)="tologin()">Return to Home Page</button>
+</div>

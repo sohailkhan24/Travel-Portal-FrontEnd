@@ -1,0 +1,252 @@
+<div *ngIf="!submitted">
+  <legend>
+    <h1>Raise New Ticket</h1>
+  </legend>
+  <form
+    class="form-horizontal"
+    #newTicketform="ngForm"
+    (ngSubmit)="onSubmit(newTicketform)"
+  >
+    <div class="form-group">
+      <label class="col-md-12 control-label" for="ticketImpact"
+        >Request Type</label
+      >
+      <div class="col-md-6">
+        <select id="ticketImpact" name="requestType" class="form-control">
+          <option disabled selected>Choose Request Type</option>
+          <option
+            name="requestType"
+            [(ngModel)]="userTicketData.requestType"
+            [value]="requestType"
+            *ngFor="let requestType of requestType"
+          >
+            {{ requestType }}
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-md-12 control-label" for="ticketImpact"
+        >Request Type</label
+      >
+      <div class="col-md-6">
+        <select id="ticketImpact" name="requestType" class="form-control">
+          <option disabled selected>Choose Priority</option>
+          <option
+            name="priority"
+            [(ngModel)]="userTicketData.priority"
+            [value]="priority"
+            *ngFor="let priority of priority"
+          >
+            {{ priority }}
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-md-12 control-label" for="ticketRequestorName"
+        >Travel city</label
+      >
+      <div class="col-md-12">
+        <input
+          id="ticketRequestorName"
+          name="destCity"
+          type="text"
+          placeholder="Destination Location"
+          class="form-control input-md"
+          required
+          [(ngModel)]="userTicketData.travelCity"
+        />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-md-12 control-label" for="ticketRequestorName"
+        >From Location city</label
+      >
+      <div class="col-md-12">
+        <input
+          id="ticketRequestorName"
+          name="departCity"
+          type="text"
+          placeholder="Departure Location"
+          class="form-control input-md"
+          required
+          [(ngModel)]="userTicketData.fromLocationCity"
+        />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-md-12 control-label" for="ticketRequestorName"
+        >Travel Start Date</label
+      >
+      <div class="col-md-12">
+        <input
+          id="ticketRequestorName"
+          name="startDate"
+          type="date"
+          placeholder="From Date"
+          class="form-control input-md"
+          required
+          [(ngModel)]="userTicketData.travelStartDate"
+        />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-md-12 control-label" for="ticketRequestorName"
+        >Travel End Date</label
+      >
+      <div class="col-md-12">
+        <input
+          id="ticketRequestorName"
+          name="endDate"
+          type="date"
+          placeholder="Till Date"
+          class="form-control input-md"
+          required
+          [(ngModel)]="userTicketData.travelEndDate"
+        />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-md-12 control-label" for="ticketRequestorName"
+        >Passport Number</label
+      >
+      <div class="col-md-12">
+        <input
+          id="ticketRequestorName"
+          name="passportNumber"
+          type="text"
+          placeholder="Passport No."
+          class="form-control input-md"
+          required
+          [(ngModel)]="userTicketData.passportNumber"
+        />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-md-12 control-label" for="ticketRequestorName"
+        >Project Name</label
+      >
+      <div class="col-md-12">
+        <input
+          id="ticketRequestorName"
+          name="projectName"
+          type="text"
+          placeholder="Project Name"
+          class="form-control input-md"
+          required
+          [(ngModel)]="userTicketData.projectName"
+        />
+      </div>
+    </div>
+
+    <p>Expense Borne By</p>
+    <div class="radio" *ngFor="let party of expense">
+      <label class="col-md-12"
+        ><input
+          type="radio"
+          name="expenseBorneBy"
+          [(ngModel)]="userTicketData.expenseBorneBy"
+          [value]="party"
+        />{{ party }}</label
+      >
+    </div>
+
+    <div class="form-group">
+      <label class="col-md-12 control-label" for="ticketRequestorName"
+        >Travel Approval Name</label
+      >
+      <div class="col-md-12">
+        <input
+          id="ticketRequestorName"
+          name="approvalAuth"
+          type="text"
+          placeholder="Approver Name"
+          class="form-control input-md"
+          required
+          [(ngModel)]="userTicketData.travelApproverName"
+        />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-md-12 control-label" for="ticketRequestorName"
+        >Expected Duration Of Travel</label
+      >
+      <div class="col-md-12">
+        <input
+          id="ticketRequestorName"
+          name="durationOfTravel"
+          type="text"
+          placeholder="Project Name"
+          class="form-control input-md"
+          minlength="5"
+          maxlength="100"
+          [(ngModel)]="userTicketData.expectDurationOfTarvel"
+        />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-md-12 control-label" for="ticketRequestorName"
+        >Other Expenses</label
+      >
+      <div class="col-md-12">
+        <input
+          id="ticketRequestorName"
+          name="otherExp"
+          type="text"
+          placeholder="Other Expenses"
+          class="form-control input-md"
+          required
+          [(ngModel)]="userTicketData.upperBound"
+        />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-md-12 control-label" for="ticketRequestorName"
+        >Additional Details</label
+      >
+      <div class="col-md-12">
+        <input
+          id="ticketRequestorName"
+          name="additionalDetails"
+          type="text"
+          placeholder="Any Additional Details"
+          class="form-control input-md"
+          required
+          [(ngModel)]="userTicketData.anyAdditionalDetails"
+          maxlength="1000"
+        />
+      </div>
+    </div>
+
+    <div *ngIf="isNew; else elseBlock">
+      <input
+        type="submit"
+        class="fourth"
+        [disabled]="!newTicketform.valid"
+        value="Create Ticket"
+      />
+    </div>
+    <ng-template #elseBlock
+      ><input
+        type="submit"
+        class="fourth"
+        [disabled]="!newTicketform.valid"
+        value="Update Ticket"
+    /></ng-template>
+  </form>
+</div>
+<div *ngIf="submitted">
+  <p>Hello u can see the info here</p>
+  <p>{{ userTicketData.id }}</p>
+</div>
