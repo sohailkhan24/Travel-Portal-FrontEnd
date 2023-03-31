@@ -12,6 +12,7 @@ import { Userregister } from '../Models/userregister';
 })
 export class AuthService {
   constructor(private http: HttpClient) {}
+
   login(userName: string, password: string): Observable<any> {
     return this.http
       .post<any>(environment.apiUrl + '/users/login', {
@@ -26,12 +27,12 @@ export class AuthService {
         })
       );
   }
-  adminlogin(username: string, password: string): Observable<any> {
-    return this.http.post<User>(environment.apiUrl + '/api/auth/login', {
-      username,
-      password,
-    });
-  }
+  // adminlogin(username: string, password: string): Observable<any> {
+  //   return this.http.post<User>(environment.apiUrl + '/users/login', {
+  //     username,
+  //     password,
+  //   });
+  // }
   signup(userData: Userregister): Observable<any> {
     console.log(' Auth service ' + userData.firstName);
     // tslint:disable-next-line: prefer-const

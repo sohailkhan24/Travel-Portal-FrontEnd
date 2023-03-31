@@ -1,29 +1,27 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Ticket } from '../Models/ticket';
 import { TicketService } from '../services/ticket.service';
 
 @Component({
-  selector: 'app-profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css'],
+  // tslint:disable-next-line: component-selector
+  selector: 'app-adminDashboard',
+  templateUrl: './adminDashboard.component.html',
+  styleUrls: ['./adminDashboard.component.css'],
 })
-export class ProfileComponent implements OnInit {
+export class AdminDashboardComponent implements OnInit {
   pageNo: number = 0;
   params: string = `?size=10&page=${this.pageNo}`;
   ticketData: Ticket[];
   lastpage: boolean;
   firstpage: boolean;
-
-  constructor(private ticketService: TicketService) {}
+  constructor(private ticketService: TicketService, private http: HttpClient) {}
 
   ngOnInit(): void {
     this.fetch(`?size=10&page=${this.pageNo}`);
-    // this.covids.getcountries().subscribe((data) => {
-    //   console.log(data);
-    //   this.count = data;
-    // });
+    // tslint:disable-next-line: deprecation
   }
-
   buttionclick() {
     //  console.log("in click");
     // let ageNo=this.pageNo+1;
@@ -54,23 +52,3 @@ export class ProfileComponent implements OnInit {
     );
   }
 }
-
-// fetch(pageno: string){
-//   this.ticketService.getallticket(pageno).subscribe(
-//     async (data) => {
-//       this.lastpage=data.last;
-//       this.firstpage=data.first;
-//       this.ticketData = data;
-//       await this.ticketData;
-
-//       console.log('from profile', this.ticketData[0].id);
-//       // if (this.ticketData) {
-//       // this.getData = true;
-//       // this.setter.setter(this.userData);
-//       // }
-//     },
-//     (error) => {
-//       console.log(error);
-//     }
-//   )
-//   };

@@ -1,3 +1,76 @@
-<p>
-  edit-ticket-admin works!
-</p>
+<div class="container">
+  <div *ngIf="getData">
+    <form
+      #adminForm="ngForm"
+      class="form-horizontal"
+      enctype="multipart/form-data"
+      (ngSubmit)="onSubmit(adminForm)"
+    >
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="status">Status</label>
+        <div class="col-md-9">
+          <select
+            id="status"
+            name="status"
+            ngModel
+            class="form-control"
+            required
+          >
+            <option
+              name="status"
+              *ngFor="let status of statuses"
+              [value]="status"
+            >
+              {{ status }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label
+          class="col-md-3 col-form-label"
+          for="comments"
+          placeholder="Comments"
+          >Comments</label
+        >
+        <div class="col-md-9">
+          <input
+            id="comments"
+            name="comments"
+            type="text"
+            class="form-control"
+            ngModel
+            required
+          />
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="file">File</label>
+        <!-- multiple="multiple" -->
+        <input
+          id="file"
+          name="file"
+          type="file"
+          class="form-control-file"
+          ngModel
+        />
+      </div>
+      <input
+        type="submit"
+        class="btn btn-primary px-md-4 my-2"
+        [disabled]="!adminForm.valid"
+        value="Update"
+      />
+    </form>
+  </div>
+  <div *ngIf="!getData" class="pl-5 mx-auto" style="width: 200px">
+    <div
+      class="loader"
+      data-toggle="tooltip"
+      data-placement="top"
+      title="Loading..."
+    ></div>
+  </div>
+</div>

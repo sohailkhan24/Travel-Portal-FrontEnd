@@ -13,6 +13,28 @@ import { UserTicket } from '../Models/userTicket';
   providedIn: 'root',
 })
 export class TicketService {
+  
+  
+  updateTicketAdmin(
+    status: string,
+    comments: string,
+    files: File,
+    ticketid: string
+    
+    
+    
+  ): Observable<any> {
+    let formData: FormData = new FormData();
+    formData.append('files', files);
+    formData.append('ticketId', ticketid);
+    formData.append('comment', comments);
+    formData.append('status', status);
+
+    return this.http.put<any>(environment.apiUrl + '/tickets/admin', formData, {
+      reportProgress: true,
+      responseType: 'json',
+    });
+  }
   constructor(private http: HttpClient) {}
 
   newticket(ticketRegister: TicketRegister): Observable<any> {
@@ -96,24 +118,53 @@ export class TicketService {
     });
   }
 
-  getallticket(): Observable<any> {
-    return this.http.get<Alltickets>(environment.apiUrl + '/users').pipe(
+  // getallticket(qurry: string): Observable<any> {
+  //   return this.http.get(environment.apiUrl + '/users/' + qurry);
+  // }
+  getallticket(query: string): Observable<any> {
+    return this.http
+      .get<Alltickets>(environment.apiUrl + '/tickets/' + query)
+      .pipe(
+        map((data) => {
+          console.log('Hello from getallticket', data);
+          // localStorage.setItem('jwtToken', data);
+          return data;
+        })
+      );
+  }
+
+  getATicket(id: string): Observable<any> {
+    return this.http.get<Ticket>(environment.apiUrl + '/tickets/' + id).pipe(
       map((data) => {
-        console.log('Hello from getallticket', data);
+        console.log('Hello from getaticket', data);
         // localStorage.setItem('jwtToken', data);
         return data;
       })
     );
   }
 
-  getATicket(id: string): Observable<any> {
-    return this.http.get<Ticket>(environment.apiUrl + '/tickets/' + id).pipe(
-      map((data) => {
-        console.log('Hello from getallticket', data);
-        // localStorage.setItem('jwtToken', data);
-        return data;
+  adminUpdateTicket(
+    status: string,
+    comments: string,
+    files: FileList,
+    ticketid: string
+  ): Observable<any> {
+    comments = 'this is a coomment';
+    status = 'done';
+    return this.http
+      .put<any>(environment.apiUrl + '/tickets/admin', {
+        files,
+        ticketid,
+        comments,
+        status,
       })
-    );
+      .pipe(
+        map((data) => {
+          console.log('Hello from adminknhsjiagduywqhg', data);
+          // localStorage.setItem('jwtToken', data);
+          return data;
+        })
+      );
   }
 
   admingetallticket(): Observable<any> {

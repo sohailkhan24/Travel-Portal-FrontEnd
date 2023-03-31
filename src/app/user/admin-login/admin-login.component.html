@@ -2,11 +2,6 @@
   <div id="formContent">
     <!-- Tabs Titles -->
 
-    <!-- Icon -->
-    <div class="fadeIn first">
-      <img src="" id="icon" alt="User Icon" />
-    </div>
-
     <!-- Login Form -->
     <form #adminLoginForm="ngForm" (ngSubmit)="onSubmit(adminLoginForm)">
       <input
@@ -30,7 +25,6 @@
       />
       <button
         type="submit"
-        type="button"
         class="btn btn-primary m-3"
         [disabled]="!adminLoginForm.valid"
       >

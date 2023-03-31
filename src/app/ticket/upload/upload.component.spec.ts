@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { EditTicketAdminComponent } from './edit-ticket-admin.component';
+import { UploadComponent } from './upload.component';
 
-describe('EditTicketAdminComponent', () => {
-  let component: EditTicketAdminComponent;
-  let fixture: ComponentFixture<EditTicketAdminComponent>;
+describe('UploadComponent', () => {
+  let component: UploadComponent;
+  let fixture: ComponentFixture<UploadComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EditTicketAdminComponent ]
+      declarations: [ UploadComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EditTicketAdminComponent);
+    fixture = TestBed.createComponent(UploadComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

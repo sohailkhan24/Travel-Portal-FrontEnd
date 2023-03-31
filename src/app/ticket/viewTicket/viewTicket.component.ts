@@ -1,21 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Ticket } from 'src/app/Models/ticket';
-import { TicketRegister } from 'src/app/Models/ticketRegister';
 import { TicketService } from 'src/app/services/ticket.service';
 
 @Component({
-  selector: 'app-edit-ticket',
-  templateUrl: './edit-ticket.component.html',
-  styleUrls: ['./edit-ticket.component.css'],
+  selector: 'app-viewTicket',
+  templateUrl: './viewTicket.component.html',
+  styleUrls: ['./viewTicket.component.css'],
 })
-export class EditTicketComponent implements OnInit {
-  routeSub: Subscription;
+export class ViewTicketComponent implements OnInit {
   id: string;
-  ticketData: Ticket = new Ticket();
-  userTicketData: TicketRegister = new TicketRegister();
+  routeSub: Subscription;
+  ticketData: Ticket;
   getData = false;
   constructor(
     private router: ActivatedRoute,
@@ -36,25 +33,6 @@ export class EditTicketComponent implements OnInit {
         console.log(this.ticketData);
         if (this.ticketData) {
           this.getData = true;
-        }
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-  }
-
-  onSubmit(form: NgForm) {
-    if (!form.valid) {
-      return null;
-    }
-    this.ticketService.updateTicket(this.userTicketData).subscribe(
-      async (data) => {
-        this.userTicketData = data;
-        await this.userTicketData;
-        if (this.userTicketData) {
-          this.getData = true;
-          // this.setter.setter(this.userTicketData);
         }
       },
       (error) => {

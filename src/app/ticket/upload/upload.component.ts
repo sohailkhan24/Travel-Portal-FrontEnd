@@ -1,18 +1,15 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Observable, Subscription } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { AdminTicket } from 'src/app/Models/adminTicket';
-import { TicketService } from 'src/app/services/ticket.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
-  selector: 'app-edit-ticket-admin',
-  templateUrl: './edit-ticket-admin.component.html',
-  styleUrls: ['./edit-ticket-admin.component.css'],
+  selector: 'app-upload',
+  templateUrl: './upload.component.html',
+  styleUrls: ['./upload.component.css'],
 })
-export class EditTicketAdminComponent implements OnInit {
+export class UploadComponent implements OnInit {
   adminTicketData: AdminTicket = new AdminTicket();
   statuses: string[] = ['In Process', 'Done'];
   files: File;
@@ -21,8 +18,7 @@ export class EditTicketAdminComponent implements OnInit {
   routeSub: Subscription;
   constructor(
     private router: ActivatedRoute,
-    private ticketService: TicketService,
-    private http: HttpClient
+    private ticketService: TicketService
   ) {}
 
   ngOnInit(): void {
@@ -48,7 +44,6 @@ export class EditTicketAdminComponent implements OnInit {
     if (!form.valid) {
       return;
     }
-
     this.files = form.value.file;
     let comments = form.value.comments;
     let status = form.value.status;

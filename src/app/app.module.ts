@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
-
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { FooterComponent } from './footer/footer.component';
@@ -10,7 +9,6 @@ import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { NewTicketComponent } from './ticket/new-ticket/new-ticket.component';
 import { EditTicketComponent } from './ticket/edit-ticket/edit-ticket.component';
-
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AboutComponent } from './about/about.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
@@ -23,6 +21,8 @@ import { HttpClientInterceptor } from './Http-Client-Interceptor';
 import { EdituserComponent } from './user/edituser/edituser.component';
 import { UserdetailComponent } from './user/userdetail/userdetail.component';
 import { EditTicketAdminComponent } from './ticket/edit-ticket-admin/edit-ticket-admin.component';
+import { ViewTicketComponent } from './ticket/viewTicket/viewTicket.component';
+import { AdminDashboardComponent } from './adminDashboard/adminDashboard.component';
 
 @NgModule({
   declarations: [
@@ -31,9 +31,11 @@ import { EditTicketAdminComponent } from './ticket/edit-ticket-admin/edit-ticket
     FooterComponent,
     HomeComponent,
     ProfileComponent,
+    AdminDashboardComponent,
     NewTicketComponent,
     EditTicketComponent,
     EditTicketAdminComponent,
+    ViewTicketComponent,
     LoginComponent,
     SignupComponent,
     NotFoundComponent,
@@ -43,6 +45,7 @@ import { EditTicketAdminComponent } from './ticket/edit-ticket-admin/edit-ticket
     AdminLoginComponent,
     EdituserComponent,
     UserdetailComponent,
+    AdminDashboardComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [
